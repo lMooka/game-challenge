@@ -36,16 +36,19 @@ public class CellContainer {
         this.generation = father.generation + 1;
         this.father = father;
         this.children = new ArrayList<>();
-        this.color = Color.getHSBColor(random.nextFloat(), random.nextFloat(), random.nextFloat());
+        this.color = Color.green;
+
+        this.x = father.x;
+        this.y = father.y;
 
         if (direction == Direction.right)
-            x = father.x + 1;
+            x++;
         else if (direction == Direction.left)
-            x = father.x - 1;
+            x--;
         else if (direction == Direction.up)
-            y = father.y + 1;
+            y++;
         else if (direction == Direction.down)
-            y = father.y - 1;
+            y--;
 
         this.direction = direction;
     }

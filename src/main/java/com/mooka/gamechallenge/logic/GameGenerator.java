@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class GameGenerator {
     private long seed = 0L;
-    private float procreationChance = 0.75f;
+    private float procreationChance = 0.66f;
     private final float procreationChanceDecay = 0.01f;
     private final int maxCellContainerAmount = 1000;
     private int cellContainerCount = 0;
@@ -55,7 +55,10 @@ public class GameGenerator {
         if(branchHead == null)
             return null;
 
-        if (/*branchHead.isValidDirection(direction) &&*/ random.nextFloat() <= successChance) {
+        if(branchHead.getFather() != null && branchHead.getFather().getChildren().size() > 1 && branchHead.getChildren().size() > 1)
+            return null;
+
+        if (branchHead.isValidDirection(direction) && random.nextFloat() <= successChance) {
             //procreationChance -= procreationChanceDecay;
             cellContainerCount++;
             return branchHead.procreate(direction);

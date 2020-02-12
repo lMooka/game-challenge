@@ -19,7 +19,8 @@ public class Main extends Canvas {
         int x = 400 + cellSize * cellContainer.getX();
         int y = 400 + cellSize * cellContainer.getY();
         graphics.fillRect(x, y, cellSize, cellSize);
-        graphics.drawChars(String.valueOf(cellContainer.getGeneration()).toCharArray(), 0, 0, x, y);
+        graphics.setColor(Color.red);
+        graphics.drawChars(String.valueOf(cellContainer.getGeneration()).toCharArray(), 0, 1, x + cellSize / 3, y + cellSize / 2);
         cellContainer.getChildren().forEach(h -> drawBranch(graphics, h));
     }
 
